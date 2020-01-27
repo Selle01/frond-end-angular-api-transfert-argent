@@ -1,0 +1,67 @@
+
+  <form
+  class="form-horizontal"
+  id="add-form"
+  [formGroup]="roleForm"
+  (ngSubmit)="editRoleSubmit(role)"
+>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Modifier Role</h5>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      aria-label="Close"
+      (click)="onClose()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="username">libelle</label>
+      <input
+        matInput
+        [ngClass]="{ 'is-invalid':(submitted && formControls.libelle.errors) || isViolationsError }"
+        type="text"
+        id="libelle"
+        class="form-control"
+        placeholder="libelle"
+        formControlName="libelle"
+        [(ngModel)]="role.libelle"
+        required
+      />
+      <div
+        *ngIf="(submitted && formControls.libelle.errors) || isViolationsError"
+        class="invalid-feedback"
+      >
+        <div
+          *ngIf="(submitted && formControls.libelle.errors) || isViolationsError"
+        >
+          {{violationsError.libelle}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer bg-whitesmoke br">
+    <button
+      mat-raised-button
+      [disabled]="loading ||!roleForm.valid"
+      color="primary"
+      class="btn btn-primary"
+      type="submit"
+    >
+      <p class="pr-2  d-inline">Modifier</p>
+      <i *ngIf="loading" class="fas fa-circle-notch fa-spin "></i>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-light"
+      data-dismiss="modal"
+      (click)="onClose()"
+    >
+      Close
+    </button>
+  </div>
+</form>

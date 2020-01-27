@@ -1,0 +1,16 @@
+
+
+
+  <div class="modal-content delete-item">
+    <div class="modal-body">
+      <h5 class="text-center">Êtes-vous sûr de vouloir supprimer le role {{libelle}} ?</h5>
+
+    </div>
+    <div class=" bg-whitesmoke br text-center p-2">
+      <button type="button" class="btn btn-danger m-1" (click)="confirm()" [disabled]="loadingBtnModalDelete" >
+        <p *ngIf="!loadingBtnModalDelete" class="d-inline">Oui</p>
+        <i *ngIf="loadingBtnModalDelete" class="fas fa-circle-notch fa-spin "></i>
+      </button>
+      <button type="button" class="btn btn-light m-1" (click)="decline()" >Non</button>
+    </div>
+  </div>

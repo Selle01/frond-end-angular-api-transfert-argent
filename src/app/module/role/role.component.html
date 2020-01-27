@@ -1,0 +1,92 @@
+<section class="section">
+  <div class="section-body">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h4>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="startCreate()"
+              >
+                Créer Role
+              </button>
+            </h4>
+            <div class="card-header-form">
+              <form>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search"
+                  />
+                  <div class="input-group-btn">
+                    <button class="btn btn-primary searchRole">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of displayedColumns">
+                      {{ column }}
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- <tr *ngIf="loadingTable">
+                   <td colspan=4>
+                    <content-loader >
+                      <svg:rect x="0" y="0" rx="3" ry="3" width="100%" height="10" />
+                      <svg:rect x="0" y="20" rx="3" ry="3" width="100%" height="10" />
+                    </content-loader>
+                   </td>
+                 </tr> -->
+
+                  <tr *ngFor="let role of roles | paginate: config">
+                    <td>{{ role.id }}</td>
+                    <td>{{ role.libelle }}</td>
+                    <td class="text-center">
+                      <button
+                      class="btn btn-icon icon-left btn-primary"
+                      (click)="startEdit(role.id, role.libelle)"
+                      [disabled]="loadingEditItem && role.id == idRole"
+                      >
+                        <i class="far fa-edit"></i> Edite
+                        <i *ngIf="loadingEditItem && role.id == idRole" class="fas fa-circle-notch fa-spin "></i>
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-icon icon-left btn-danger"
+                        (click)="startDelete(role.id, role.libelle)"
+                        [disabled]="loadingDeleteItem && role.id == idRole"
+                      >
+                        <i class="fas fa-times d-inline"></i> Delete
+                        <i *ngIf="loadingDeleteItem && role.id == idRole" class="fas fa-circle-notch fa-spin "></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <pagination-controls
+              (pageChange)="pageChange($event)"
+              class="my-pagination"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

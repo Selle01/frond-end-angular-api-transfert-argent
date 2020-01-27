@@ -1,0 +1,6 @@
+.delete-item{
+  border-radius: unset !important;
+  border-top-width: 4px !important;
+    border-top-style: solid !important;
+    border-top-color: rgb(252, 84, 75) !important;
+}
